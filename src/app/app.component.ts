@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    RouterLinkWithHref
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'VIAJASINESTRES-WEB';
+  title = 'ViajaSinEstres';
 }

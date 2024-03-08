@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
-})
-export class AppComponent {
-  title = 'country-app';
-}
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes)]
+};
