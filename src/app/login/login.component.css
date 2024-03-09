@@ -1,0 +1,28 @@
+input[type="password"] { 
+    margin-right: -40px;
+}
+
+.input-group-text {
+    border-left-style: none;
+    background-color: var(--bs-body-bg);
+    z-index: 100;
+}
+
+#form-login {
+    width: 360px;
+}
+
+form > button {
+    width: 100%;
+}
+
+form a {
+    text-decoration: none;
+    color: var(--bs-body-color);
+}
+
+a#recover {
+    color: #36633F;
+    font-size: 14px;
+    font-weight: 500;
+}

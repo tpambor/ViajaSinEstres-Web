@@ -1,6 +1,15 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "bootstrap-icons/font/bootstrap-icons.min.css";
 
+/* fira-sans-300 - latin */
+@font-face {
+    font-display: block;
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: url('assets/fonts/fira-sans-v17-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 /* fira-sans-regular - latin */
 @font-face {
     font-display: block;
@@ -8,6 +17,15 @@
     font-style: normal;
     font-weight: 400;
     src: url('assets/fonts/fira-sans-v17-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* fira-sans-500 - latin */
+@font-face {
+    font-display: block;
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: url('assets/fonts/fira-sans-v17-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* fira-sans-600 - latin */
@@ -22,4 +40,29 @@
 :root {
     --bs-font-sans-serif: 'Fira Sans', sans-serif;
     --bs-body-bg: #F4F8F2;
+    --bs-body-color: #24422A;
+    --bs-border-color: #36633F;
+}
+
+.form-control:focus {
+    border-color: #36633F;
+    box-shadow: 0 0 0 .25rem rgba(54, 99, 63, .25);
+}
+
+.btn {
+    --bs-btn-border-width: 0;
+    --bs-btn-font-weight: 300;
+}
+
+.btn-primary {
+    --bs-btn-color: #F4F8F2;
+    --bs-btn-bg: #36633F;
+    --bs-btn-hover-color: #F4F8F2;
+    --bs-btn-hover-bg: #345d3a;
+    --bs-btn-active-color: #F4F8F2;
+    --bs-btn-active-bg: #345a37;
+}
+
+h1 {
+    font-size: 32px;
 }
