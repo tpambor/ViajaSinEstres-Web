@@ -14,14 +14,14 @@
         <form id="form-login">
             <div class="mb-3">
                 <label for="email" class="form-label">Correo</label>
-                <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
+                <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo" />
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
                 <div class="input-group">
-                    <input type="password" class="form-control form-floating" id="password" placeholder="Ingresa tu contraseña">
+                    <input type="{{showPassword ? 'text' : 'password' }}" class="form-control form-floating" id="password" placeholder="Ingresa tu contraseña" />
                     <span class="input-group-text">
-                        <i class="bi bi-eye-slash" id="toggle-password" style="cursor: pointer"></i>
+                        <i class="bi" [ngClass]="{'bi-eye': !showPassword, 'bi-eye-slash': showPassword}" id="toggle-password" style="cursor: pointer" (click)="togglePasswordVisibility()"></i>
                     </span>
                 </div>
             </div>
