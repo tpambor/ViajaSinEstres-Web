@@ -1,0 +1,37 @@
+th[sortable].desc:before, th[sortable].asc:before {
+    content: "\f229";
+    display: block;
+    width: 22px;
+    height: 22px;
+    float: left;
+    margin-left: -22px;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: 400 !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 24px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+th[sortable].asc:before {
+    content: "\f235";
+}
+
+.pagination {
+    --bs-pagination-border-width: 0;
+    --bs-pagination-color: #36633F;
+    --bs-pagination-active-color: var(--bs-body-bg);
+    --bs-pagination-active-bg: #36633F;
+    --bs-pagination-hover-color: #345d3a;
+    --bs-pagination-hover-bg: #deede1;
+    --bs-pagination-focus-color: #345a37;
+    --bs-pagination-focus-bg: #deede1;
+    --bs-pagination-focus-box-shadow: 0 0 0 .25rem rgba(54, 99, 63, .25);
+    --bs-pagination-border-radius: 0.5rem;
+}
+
+.pagination a {
+    cursor: pointer;
+}
