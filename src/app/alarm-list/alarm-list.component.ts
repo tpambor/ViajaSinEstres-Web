@@ -2,157 +2,8 @@ import { NgClass, NgFor } from '@angular/common';
 import { Component, Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-
-interface Alarm {
-  id: number;
-  name: string;
-  arrival: string;
-  advance: string;
-  checked: boolean;
-}
-
-const ALARMS: Alarm[] = [
-  {
-    id: 1,
-    name: 'Casa a deporte',
-    arrival: '07:30 am',
-    advance: '15 min',
-    checked: false,
-  },
-  {
-    id: 2,
-    name: 'Casa a oficina',
-    arrival: '08:30 am',
-    advance: '15 min',
-    checked: false,
-  },
-  {
-    id: 3,
-    name: 'Universidad',
-    arrival: '09:30 am',
-    advance: '30 min',
-    checked: false,
-  },
-  {
-    id: 4,
-    name: 'Alarm 4',
-    arrival: '10:30 am',
-    advance: '60 min',
-    checked: false,
-  },
-  {
-    id: 5,
-    name: 'Alarm 5',
-    arrival: '10:40 am',
-    advance: '30 min',
-    checked: false,
-  },
-  {
-    id: 6,
-    name: 'Alarm 6',
-    arrival: '10:50 am',
-    advance: '15 min',
-    checked: false,
-  },
-  {
-    id: 7,
-    name: 'Alarm 7',
-    arrival: '11:30 am',
-    advance: '60 min',
-    checked: false,
-  },
-  {
-    id: 8,
-    name: 'Alarm 8',
-    arrival: '11:35 am',
-    advance: '30 min',
-    checked: false,
-  },
-  {
-    id: 9,
-    name: 'Alarm 9',
-    arrival: '11:40 am',
-    advance: '15 min',
-    checked: false,
-  },
-  {
-    id: 10,
-    name: 'Alarm 10',
-    arrival: '07:30 pm',
-    advance: '15 min',
-    checked: false,
-  },
-  {
-    id: 11,
-    name: 'Alarm 11',
-    arrival: '07:31 am',
-    advance: '15 min',
-    checked: false,
-  },
-  {
-    id: 12,
-    name: 'Alarm 12',
-    arrival: '08:31 am',
-    advance: '15 min',
-    checked: false,
-  },
-  {
-    id: 13,
-    name: 'Alarm 13',
-    arrival: '09:31 am',
-    advance: '30 min',
-    checked: false,
-  },
-  {
-    id: 14,
-    name: 'Alarm 14',
-    arrival: '10:31 am',
-    advance: '60 min',
-    checked: false,
-  },
-  {
-    id: 15,
-    name: 'Alarm 15',
-    arrival: '10:41 am',
-    advance: '30 min',
-    checked: false,
-  },
-  {
-    id: 16,
-    name: 'Alarm 16',
-    arrival: '10:51 am',
-    advance: '15 min',
-    checked: false,
-  },
-  {
-    id: 17,
-    name: 'Alarm 17',
-    arrival: '11:31 am',
-    advance: '60 min',
-    checked: false,
-  },
-  {
-    id: 18,
-    name: 'Alarm 18',
-    arrival: '11:36 am',
-    advance: '30 min',
-    checked: false,
-  },
-  {
-    id: 19,
-    name: 'Alarm 19',
-    arrival: '11:41 am',
-    advance: '15 min',
-    checked: false,
-  },
-  {
-    id: 20,
-    name: 'Alarm 20',
-    arrival: '07:31 pm',
-    advance: '15 min',
-    checked: false,
-  },
-];
+import { Alarm } from '../alarm';
+import { ALARMS } from '../alarms';
 
 export type SortColumn = keyof Alarm | '';
 export type SortDirection = 'asc' | 'desc' | '';
@@ -228,7 +79,7 @@ export class AlarmListComponent {
 			});
 		}
 
-    this.pageCount = Math.max(1, Math.floor(alarms.length / 10));
+    this.pageCount = Math.max(1, Math.ceil(alarms.length / 10));
 
     alarms = alarms.slice((this.page - 1) * 10, (this.page - 1) * 10 + 10);
 
@@ -288,7 +139,7 @@ export class AlarmListComponent {
   }
 
   deseletAll() {
-    this.alarms.forEach((o, i, a) => a[i].checked = false);
+    ALARMS.forEach((o, i, a) => a[i].checked = false);
   }
 
   toggleSelectAll() {
@@ -304,5 +155,19 @@ export class AlarmListComponent {
 
   onCheckboxChange() {
     this.refreshData()
+  }
+
+  deleteAlarm(id: number) {
+    ALARMS.splice(ALARMS.findIndex((o) => o.id === id), 1);
+
+    this.refreshData();
+  }
+
+  deleteSelectedAlarms() {
+    while(ALARMS.some((o) => o.checked)) {
+      ALARMS.splice(ALARMS.findIndex((o) => o.checked), 1);
+    }
+
+    this.refreshData();
   }
 }

@@ -1,7 +1,7 @@
 <div class="row pb-5">
     <div class="col d-flex justify-content-between align-items-center">
         <h1>Tus alarmas</h1>
-        <button type="submit"class="btn btn-primary" routerLink="/createalarm">Agregar alarma</button>
+        <button type="submit"class="btn btn-primary" routerLink="/alarms/new">Agregar alarma</button>
     </div>
 </div>
 
@@ -24,13 +24,15 @@
                         <td>{{ alarm.name }}</td>
                         <td>{{ alarm.arrival }}</td>
                         <td>{{ alarm.advance }}</td>
-                        <td><div class="d-flex flex-wrap justify-content-between px-2"><a>Eliminar</a><a>Editar</a></div></td>
+                        <td><div class="d-flex flex-wrap justify-content-between px-2"><a (click)="deleteAlarm(alarm.id)">Eliminar</a><a routerLink="/alarms/{{alarm.id}}/edit">Editar</a></div></td>
                     </tr>
                 }
             </tbody>
         </table>
         <div class="d-flex justify-content-between">
-            <div id="delete-selection" class="px-2 disabled" [ngClass]="{'disabled': selectionState === 'none'}"><i class="bi bi-trash3-fill pe-2"></i>Eliminar alarmas seleccionadas</div>
+            <div id="delete-selection" class="px-2 disabled" [ngClass]="{'disabled': selectionState === 'none'}">
+                <a (click)="deleteSelectedAlarms()"><i class="bi bi-trash3-fill pe-2"></i>Eliminar alarmas seleccionadas</a>
+            </div>
             <nav id="pagination" class="d-flex justify-content-end align-items-baseline">
                 <span class="pe-2" style="min-width: 120px;">Total {{ totalAlarms }} items</span>
                 <ul class="pagination">

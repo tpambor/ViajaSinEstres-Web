@@ -9,6 +9,6 @@ export const routes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'register', component: UserRegistrationComponent },
     { path: 'alarms', component: AlarmListComponent },
-    { path: 'createalarm', component: CreateAlarmComponent },
-    { path: 'editalarm', component: EditAlarmComponent }
+    { path: 'alarms/new', component: CreateAlarmComponent },
+    { path: 'alarms/:id/edit', component: EditAlarmComponent }
 ];
