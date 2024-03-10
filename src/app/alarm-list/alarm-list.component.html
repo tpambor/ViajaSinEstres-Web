@@ -11,7 +11,19 @@
             <thead>
                 <tr>
                     <th scope="col" style="width: 50px;" (click)="toggleSelectAll()"><input type="checkbox" value="" [checked]="selectionState === 'all'" [indeterminate]="selectionState === 'some'"></th>
-                    <th scope="col" style="min-width: 180px;" sortable="name" (sort)="onSort($event)">Nombre</th>
+                    <th scope="col" style="min-width: 180px;" sortable="name" (sort)="onSort($event)">Nombre
+                        <div ngbDropdown #dropdownSearch="ngbDropdown" placement="right-top" class="d-inline-block">
+                            <i id="dropdown-search" class="bi bi-funnel-fill ps-3" (click)="$event.stopPropagation()" ngbDropdownToggle></i>
+                            <div ngbDropdownMenu aria-labelledby="dropdown-search" (click)="$event.stopPropagation()">
+                                <form class="px-2 py-2" style="width: 260px;">
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="search-name" #searchName placeholder="Buscar alarma" />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100" (click)="dropdownSearch.close(); search(searchName.value);"><i class="bi bi-search pe-2"></i><span>Buscar</span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </th>
                     <th scope="col" style="min-width: 90px;" sortable="arrival" (sort)="onSort($event)">Hora llegada</th>
                     <th scope="col" style="min-width: 85px;" sortable="advance" (sort)="onSort($event)">Antelación</th>
                     <th scope="col" style="text-align: center; width: 160px;">Acciones</th>

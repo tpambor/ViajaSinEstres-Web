@@ -1,5 +1,5 @@
-th[sortable].desc:before, th[sortable].asc:before {
-    content: "\f229";
+th[sortable]:before {
+    content: "\f127";
     display: block;
     width: 22px;
     height: 22px;
@@ -15,8 +15,12 @@ th[sortable].desc:before, th[sortable].asc:before {
     -moz-osx-font-smoothing: grayscale;
 }
 
+th[sortable].desc:before {
+    content: "\f128";
+}
+
 th[sortable].asc:before {
-    content: "\f235";
+    content: "\f148";
 }
 
 .pagination {
@@ -38,4 +42,8 @@ th[sortable].asc:before {
 
 table a {
     text-decoration: none;
+}
+
+.dropdown-toggle::after {
+    display: none;
 }

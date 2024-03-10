@@ -2,6 +2,7 @@ import { NgClass, NgFor } from '@angular/common';
 import { Component, Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { Alarm } from '../alarm';
 import { ALARMS } from '../alarms';
 
@@ -44,7 +45,8 @@ export class NgbdSortableHeader {
     FormsModule,
     NgFor,
     NgClass,
-    RouterLink
+    RouterLink,
+    NgbDropdownModule
   ],
   templateUrl: './alarm-list.component.html',
   styleUrl: './alarm-list.component.css'
@@ -57,6 +59,7 @@ export class AlarmListComponent {
   page = 1;
   pageCount = 1;
   selectionState!: string;
+  searchName = '';
 
   @ViewChildren(NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
 
@@ -67,13 +70,15 @@ export class AlarmListComponent {
   refreshData() {
     let alarms;
 
-    this.totalAlarms = ALARMS.length;
+    alarms = ALARMS.filter((o) => o.name.toLowerCase().includes(this.searchName.toLowerCase()));
+
+    this.totalAlarms = alarms.length;
 
 		// sort alarms
 		if (this.sortDirection === '' || this.sortColumn === '') {
-			alarms = ALARMS;
+			alarms = alarms;
 		} else {
-			alarms = [...ALARMS].sort((a, b) => {
+			alarms = [...alarms].sort((a, b) => {
 				const res = compare(a[this.sortColumn as keyof Alarm], b[this.sortColumn as keyof Alarm]);
 				return this.sortDirection === 'asc' ? res : -res;
 			});
@@ -167,6 +172,12 @@ export class AlarmListComponent {
     while(ALARMS.some((o) => o.checked)) {
       ALARMS.splice(ALARMS.findIndex((o) => o.checked), 1);
     }
+
+    this.refreshData();
+  }
+
+  search(name: string) {
+    this.searchName = name;
 
     this.refreshData();
   }
