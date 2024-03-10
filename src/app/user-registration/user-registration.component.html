@@ -23,7 +23,7 @@
           <div class="mb-3">
               <label for="password" class="form-label">Contraseña</label>
               <div class="input-group">
-                  <input type="{{showPassword ? 'text' : 'password' }}" class="form-control form-floating" id="password" placeholder="Ingresa tu contraseña" />
+                  <input type="{{showPassword ? 'text' : 'password' }}" class="form-control form-floating input-password" id="password" placeholder="Ingresa tu contraseña" />
                   <span class="input-group-text">
                       <i class="bi" [ngClass]="{'bi-eye': !showPassword, 'bi-eye-slash': showPassword}" id="toggle-password" style="cursor: pointer" (click)="togglePasswordVisibility()"></i>
                   </span>
@@ -32,9 +32,9 @@
           <div class="mb-3">
             <label for="confirmarpassword" class="form-label">Confirmar Contraseña</label>
             <div class="input-group">
-                <input type="{{showPassword ? 'text' : 'password' }}" class="form-control form-floating" id="confirmarpassword" placeholder="Ingresa la confirmacion contraseña" />
+                <input type="{{showPasswordConfirmation ? 'text' : 'password' }}" class="form-control form-floating input-password" id="confirmarpassword" placeholder="Ingresa la confirmacion contraseña" />
                 <span class="input-group-text">
-                    <i class="bi" [ngClass]="{'bi-eye': !showPassword, 'bi-eye-slash': showPassword}" id="toggle-password" style="cursor: pointer" (click)="togglePasswordVisibility()"></i>
+                    <i class="bi" [ngClass]="{'bi-eye': !showPasswordConfirmation, 'bi-eye-slash': showPasswordConfirmation}" id="toggle-password" style="cursor: pointer" (click)="togglePasswordConfirmationVisibility()"></i>
                 </span>
             </div>
         </div>
@@ -47,4 +47,3 @@
       </form>
   </div>
 </div>
-

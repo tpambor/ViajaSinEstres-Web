@@ -1,7 +1,3 @@
-input#password { 
-    margin-right: -40px;
-}
-
 .input-group-text {
     border-left-style: none;
     background-color: var(--bs-body-bg);

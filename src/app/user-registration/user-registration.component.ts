@@ -13,8 +13,13 @@ import { RouterLink } from '@angular/router';
 })
 export class UserRegistrationComponent {
   showPassword: boolean = false;
+  showPasswordConfirmation: boolean = false;
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
+  }
+
+  togglePasswordConfirmationVisibility(): void {
+    this.showPasswordConfirmation = !this.showPasswordConfirmation;
   }
 }

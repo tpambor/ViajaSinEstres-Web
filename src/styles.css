@@ -66,3 +66,7 @@
 h1 {
     font-size: 32px;
 }
+
+.input-password { 
+    margin-right: -40px;
+}
