@@ -36,6 +36,6 @@ th[sortable].asc:before {
     cursor: pointer;
 }
 
-#delete-selection.disabled {
-    color: gray;
+table a {
+    text-decoration: none;
 }
