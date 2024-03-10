@@ -35,3 +35,7 @@ th[sortable].asc:before {
 .pagination a {
     cursor: pointer;
 }
+
+#delete-selection.disabled {
+    color: gray;
+}

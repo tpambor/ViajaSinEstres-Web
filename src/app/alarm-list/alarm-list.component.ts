@@ -1,3 +1,4 @@
+import { NgClass, NgFor } from '@angular/common';
 import { Component, Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -80,6 +81,76 @@ const ALARMS: Alarm[] = [
     advance: '15 min',
     checked: false,
   },
+  {
+    id: 11,
+    name: 'Alarm 11',
+    arrival: '07:31 am',
+    advance: '15 min',
+    checked: false,
+  },
+  {
+    id: 12,
+    name: 'Alarm 12',
+    arrival: '08:31 am',
+    advance: '15 min',
+    checked: false,
+  },
+  {
+    id: 13,
+    name: 'Alarm 13',
+    arrival: '09:31 am',
+    advance: '30 min',
+    checked: false,
+  },
+  {
+    id: 14,
+    name: 'Alarm 14',
+    arrival: '10:31 am',
+    advance: '60 min',
+    checked: false,
+  },
+  {
+    id: 15,
+    name: 'Alarm 15',
+    arrival: '10:41 am',
+    advance: '30 min',
+    checked: false,
+  },
+  {
+    id: 16,
+    name: 'Alarm 16',
+    arrival: '10:51 am',
+    advance: '15 min',
+    checked: false,
+  },
+  {
+    id: 17,
+    name: 'Alarm 17',
+    arrival: '11:31 am',
+    advance: '60 min',
+    checked: false,
+  },
+  {
+    id: 18,
+    name: 'Alarm 18',
+    arrival: '11:36 am',
+    advance: '30 min',
+    checked: false,
+  },
+  {
+    id: 19,
+    name: 'Alarm 19',
+    arrival: '11:41 am',
+    advance: '15 min',
+    checked: false,
+  },
+  {
+    id: 20,
+    name: 'Alarm 20',
+    arrival: '07:31 pm',
+    advance: '15 min',
+    checked: false,
+  },
 ];
 
 export type SortColumn = keyof Alarm | '';
@@ -118,20 +189,32 @@ export class NgbdSortableHeader {
   standalone: true,
   imports: [
     NgbdSortableHeader,
-    FormsModule
+    FormsModule,
+    NgFor,
+    NgClass
   ],
   templateUrl: './alarm-list.component.html',
   styleUrl: './alarm-list.component.css'
 })
 export class AlarmListComponent {
-  alarms = ALARMS;
+  alarms!: Alarm[];
   sortDirection: SortDirection = '';
   sortColumn: SortColumn = '';
+  totalAlarms!: number;
+  page = 1;
+  pageCount = 1;
+  selectionState!: string;
 
   @ViewChildren(NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
 
+  constructor() {
+    this.refreshData();
+  }
+
   refreshData() {
     let alarms;
+
+    this.totalAlarms = ALARMS.length;
 
 		// sort alarms
 		if (this.sortDirection === '' || this.sortColumn === '') {
@@ -142,6 +225,20 @@ export class AlarmListComponent {
 				return this.sortDirection === 'asc' ? res : -res;
 			});
 		}
+
+    this.pageCount = Math.max(1, Math.floor(alarms.length / 10));
+
+    alarms = alarms.slice((this.page - 1) * 10, (this.page - 1) * 10 + 10);
+
+    if (alarms.some((o) => o.checked) == false) {
+      this.selectionState = 'none';
+    }
+    else if (alarms.every((o) => o.checked)) {
+      this.selectionState = 'all';
+    }
+    else {
+      this.selectionState = 'some';
+    }
 
     this.alarms = alarms;
   }
@@ -156,16 +253,54 @@ export class AlarmListComponent {
 
     this.sortColumn = column;
     this.sortDirection = direction;
+    this.deseletAll();
 
     this.refreshData();
   }
 
-  test() {
-    console.log(this.alarms);
-    this.alarms.forEach((o, i, a) => a[i].checked = true);
+  selectPage(i: number) {
+    if (this.page !== i) {
+      this.page = i;
+      this.deseletAll();
+
+      this.refreshData();
+    }
   }
 
-  yourMethod() {
-    console.log(this.alarms);
+  nextPage() {
+    if (this.page < this.pageCount) {
+      this.page++;
+      this.deseletAll();
+
+      this.refreshData();
+    }
+  }
+
+  previousPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.deseletAll();
+
+      this.refreshData();
+    }
+  }
+
+  deseletAll() {
+    this.alarms.forEach((o, i, a) => a[i].checked = false);
+  }
+
+  toggleSelectAll() {
+    if (this.selectionState !== 'all') {
+      this.alarms.forEach((o, i, a) => a[i].checked = true);
+    }
+    else {
+      this.deseletAll();
+    }
+
+    this.refreshData();
+  }
+
+  onCheckboxChange() {
+    this.refreshData()
   }
 }
