@@ -64,8 +64,8 @@
            </select>
         </div>
       </div>
-          <button type="submit" routerLink="/alarms" class="btn btn-cancel">Cancelar </button>
-          <button type="submit" routerLink="/alarms" class="btn btn-primary">Aceptar </button>
+      <button type="submit" routerLink="/alarms" class="btn btn-cancel">Cancelar</button>
+      <button type="submit" (click)="editAlarm(); $event.preventDefault()" class="btn btn-primary">Aceptar</button>
       </form>
   </div>
 </div>

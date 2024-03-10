@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule, Router } from '@angular/router';
+import { ToastService } from "../toast/toast.service";
 import { Alarm } from '../alarm';
 import { ALARMS } from '../alarms';
 
@@ -17,7 +18,9 @@ export class EditAlarmComponent {
   alarm!: Alarm;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastService: ToastService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,5 +28,10 @@ export class EditAlarmComponent {
     this.alarm = ALARMS.find(alarm => alarm.id === alarmId)!;
 
     console.log(this.alarm)
+  }
+
+  editAlarm() {
+    this.toastService.showSuccessToast("Se ha editado la alarma")
+    this.router.navigateByUrl("/alarms");
   }
 }
