@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { Alarm } from '../alarm';
 import { ALARMS } from '../alarms';
+import { ToastService } from '../toast/toast.service';
 
 export type SortColumn = keyof Alarm | '';
 export type SortDirection = 'asc' | 'desc' | '';
@@ -63,7 +64,7 @@ export class AlarmListComponent {
 
   @ViewChildren(NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
 
-  constructor() {
+  constructor(private toastService: ToastService) {
     this.refreshData();
   }
 
@@ -165,6 +166,7 @@ export class AlarmListComponent {
   deleteAlarm(id: number) {
     ALARMS.splice(ALARMS.findIndex((o) => o.id === id), 1);
 
+    this.toastService.showSuccessToast('Se ha eliminado la alarma')
     this.refreshData();
   }
 
@@ -173,6 +175,7 @@ export class AlarmListComponent {
       ALARMS.splice(ALARMS.findIndex((o) => o.checked), 1);
     }
 
+    this.toastService.showSuccessToast('Se han eliminado las alarmas seleccionadas')
     this.refreshData();
   }
 

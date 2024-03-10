@@ -1,0 +1,24 @@
+.toast {
+  --bs-toast-header-bg: #BDDBC3;
+  --bs-toast-header-color: #24422A;
+  --bs-toast-color: #fff;
+  --bs-toast-padding-x: 1rem;
+  background-color: #BDDBC3;
+  width: 470px;
+  border: 1px #24422A solid;
+}
+
+.toast .toast-header {
+  border-bottom: 0;
+  border-radius: calc(var(--bs-toast-border-radius) - var(--bs-toast-border-width));
+}
+
+.toast-header span {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 34px;
+}
+
+.btn-close {
+  --bs-btn-close-color: #24422A;
+}
