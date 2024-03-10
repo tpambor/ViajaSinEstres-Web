@@ -1,6 +1,7 @@
 import { NgClass, NgFor } from '@angular/common';
 import { Component, Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 interface Alarm {
   id: number;
@@ -191,7 +192,8 @@ export class NgbdSortableHeader {
     NgbdSortableHeader,
     FormsModule,
     NgFor,
-    NgClass
+    NgClass,
+    RouterLink
   ],
   templateUrl: './alarm-list.component.html',
   styleUrl: './alarm-list.component.css'
