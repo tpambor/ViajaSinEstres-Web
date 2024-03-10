@@ -1,0 +1,72 @@
+
+<div class="row pb-5">
+  <div class="col d-flex justify-content-center">
+      <h1 class="text_color">Edit Alarma</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col d-flex justify-content-center">
+      <form id="form-editar">
+        <div class="mb-3">
+          <label for="email" class="form-label">Nombre</label>
+          <input type="nombre" class="form-control margin-inline" id="nombre" value="Alarma casa - trabajo" placeholder="Ingresa su  nombre" />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label"><strong>Ruta</strong> </label>
+      </div>
+          <div class="mb-3 selectList">
+            <div class="mb-3 paddingright">
+              <label for="salida" class="form-label">Salida</label>
+             <select class="select">
+                <option>Terminal</option>
+                <option>La secreta</option>
+                <option>Cra 19 </option>
+                <option>Telecom</option>
+              </select>
+          </div>
+          <div class="mb-3">
+            <label for="destino" class="form-label">Destino</label>
+            <select class="select">
+                <option>Terminal</option>
+                <option>La secreta</option>
+                <option>Cra 19 </option>
+                <option>Telecom</option>
+             </select>
+          </div>
+        </div>
+          <div class="mb-3">
+              <label for="password" class="form-label">Horario de llegada</label>
+              <div class="mb-3">
+                <input type="text" class="form-control" id="datetimepicker" placeholder="Seleccione la hora">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmarpassword" class="form-label">Tiempo de anticipaci[on</label>
+            <div class="mb-3">
+              <select class="select">
+                <option>5 minutos</option>
+                <option>15 minutos</option>
+                <option>30 minutos</option>
+                <option>1 hora</option>
+                <option>2 horas</option>
+             </select>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmarpassword" class="form-label">Preferencias</label>
+          <div class="mb-3">
+            <select class="select">
+              <option>Bus</option>
+              <option>Taxi</option>
+              <option>Uber</option>
+           </select>
+        </div>
+      </div>
+          <button type="submit" routerLink="/alarms" class="btn btn-cancel">Cancelar </button>
+          <button type="submit" routerLink="/alarms" class="btn btn-primary">Aceptar </button>
+      </form>
+  </div>
+</div>
+
