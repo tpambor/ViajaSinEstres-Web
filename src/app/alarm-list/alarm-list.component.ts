@@ -167,10 +167,11 @@ export class AlarmListComponent {
     this.refreshData()
   }
 
-  deleteAlarm(id: number) {
-    ALARMS.splice(ALARMS.findIndex((o) => o.id === id), 1);
+  deleteAlarm() {
+    this.toastService.showSuccessToast('Se ha eliminado la alarma ' + this.alarmToDelete.name)
 
-    this.toastService.showSuccessToast('Se ha eliminado la alarma')
+    ALARMS.splice(this.alarmToDelete.id, 1);
+
     this.refreshData();
   }
 
@@ -194,7 +195,7 @@ export class AlarmListComponent {
     this.alarmToDelete = ALARMS.find((o) => o.id === id) as Alarm;
     this.modalService.open(content, { centered: true }).result.then(
       (result) => {
-        this.deleteAlarm(this.alarmToDelete.id);
+        this.deleteAlarm();
       },
       (reason) => {
       },
