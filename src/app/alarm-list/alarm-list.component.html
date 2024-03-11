@@ -36,14 +36,14 @@
                         <td>{{ alarm.name }}</td>
                         <td>{{ alarm.arrival }}</td>
                         <td>{{ alarm.advance }}</td>
-                        <td><div class="d-flex flex-wrap justify-content-between px-2"><button class="btn btn-link p-0" (click)="deleteAlarm(alarm.id)">Eliminar</button><a routerLink="/alarms/{{alarm.id}}/edit">Editar</a></div></td>
+                        <td><div class="d-flex flex-wrap justify-content-between px-2"><button class="btn btn-link p-0" (click)="openDeleteModal(alarm.id, modalContent)">Eliminar</button><a routerLink="/alarms/{{alarm.id}}/edit">Editar</a></div></td>
                     </tr>
                 }
             </tbody>
         </table>
         <div class="d-flex justify-content-between">
             <div id="delete-selection" class="px-2">
-                <button class="btn btn-link p-0 text-start" [ngClass]="{'disabled': selectionState === 'none'}" (click)="deleteSelectedAlarms()"><i class="bi bi-trash3-fill pe-2"></i>Eliminar alarmas seleccionadas</button>
+                <button class="btn btn-link p-0 text-start" [ngClass]="{'disabled': selectionState === 'none'}" (click)="openDeleteSelectionModal(modal2Content)"><i class="bi bi-trash3-fill pe-2"></i>Eliminar alarmas seleccionadas</button>
             </div>
             <nav id="pagination" class="d-flex justify-content-end align-items-baseline">
                 <span class="pe-2" style="min-width: 120px;">Total {{ totalAlarms }} items</span>
@@ -66,3 +66,39 @@
         </div>
     </div>
 </div>
+
+<ng-template #modalContent let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Eliminar alarma</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Close')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <span>¿Estás seguro de eliminar la alarma {{ alarmToDelete.name }}?</span>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="modal.dismiss('Cancelar')">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close('Confirmar')">Confirmar</button>
+    </div>
+</ng-template>
+
+<ng-template #modal2Content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Eliminar alarmas</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Close')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <span>¿Estás seguro de eliminar las alarmas seleccionadas?</span>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="modal.dismiss('Cancelar')">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close('Confirmar')">Confirmar</button>
+    </div>
+</ng-template>

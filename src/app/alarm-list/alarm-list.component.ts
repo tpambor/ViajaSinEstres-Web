@@ -1,8 +1,8 @@
 import { NgClass, NgFor } from '@angular/common';
-import { Component, Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
+import { Component, Directive, EventEmitter, Input, Output, QueryList, ViewChildren, TemplateRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Alarm } from '../alarm';
 import { ALARMS } from '../alarms';
 import { ToastService } from '../toast/toast.service';
@@ -61,10 +61,14 @@ export class AlarmListComponent {
   pageCount = 1;
   selectionState!: string;
   searchName = '';
+  alarmToDelete!: Alarm;
 
   @ViewChildren(NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
 
-  constructor(private toastService: ToastService) {
+  constructor(
+    private toastService: ToastService,
+    private modalService: NgbModal
+    ) {
     this.refreshData();
   }
 
@@ -75,15 +79,15 @@ export class AlarmListComponent {
 
     this.totalAlarms = alarms.length;
 
-		// sort alarms
-		if (this.sortDirection === '' || this.sortColumn === '') {
-			alarms = alarms;
-		} else {
-			alarms = [...alarms].sort((a, b) => {
-				const res = compare(a[this.sortColumn as keyof Alarm], b[this.sortColumn as keyof Alarm]);
-				return this.sortDirection === 'asc' ? res : -res;
-			});
-		}
+    // sort alarms
+    if (this.sortDirection === '' || this.sortColumn === '') {
+      alarms = alarms;
+    } else {
+      alarms = [...alarms].sort((a, b) => {
+        const res = compare(a[this.sortColumn as keyof Alarm], b[this.sortColumn as keyof Alarm]);
+        return this.sortDirection === 'asc' ? res : -res;
+      });
+    }
 
     this.pageCount = Math.max(1, Math.ceil(alarms.length / 10));
 
@@ -181,7 +185,29 @@ export class AlarmListComponent {
 
   search(name: string) {
     this.searchName = name;
+    this.page = 1;
 
     this.refreshData();
+  }
+
+  openDeleteModal(id: number, content: TemplateRef<any>) {
+    this.alarmToDelete = ALARMS.find((o) => o.id === id) as Alarm;
+    this.modalService.open(content, { centered: true }).result.then(
+      (result) => {
+        this.deleteAlarm(this.alarmToDelete.id);
+      },
+      (reason) => {
+      },
+    );
+  }
+
+  openDeleteSelectionModal(content: TemplateRef<any>) {
+    this.modalService.open(content, { centered: true }).result.then(
+      (result) => {
+        this.deleteSelectedAlarms();
+      },
+      (reason) => {
+      },
+    );
   }
 }
