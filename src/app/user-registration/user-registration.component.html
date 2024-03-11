@@ -5,7 +5,7 @@
 </div>
 <div class="row pb-5">
   <div class="col d-flex justify-content-center">
-      <h1 class="text_color">Crear una Cuenta</h1>
+      <h1 class="text_color">Crear una cuenta</h1>
   </div>
 </div>
 
@@ -14,7 +14,7 @@
       <form id="form-login">
         <div class="mb-3">
           <label for="email" class="form-label">Nombre</label>
-          <input type="nombre" class="form-control" id="nombre" placeholder="Ingresa su  nombre" />
+          <input type="nombre" class="form-control" id="nombre" placeholder="Ingresa tu nombre" />
       </div>
           <div class="mb-3">
               <label for="email" class="form-label">Correo</label>
@@ -32,7 +32,7 @@
           <div class="mb-3">
             <label for="confirmarpassword" class="form-label">Confirmar Contraseña</label>
             <div class="input-group">
-                <input type="{{showPasswordConfirmation ? 'text' : 'password' }}" class="form-control form-floating input-password" id="confirmarpassword" placeholder="Ingresa la confirmacion contraseña" />
+                <input type="{{showPasswordConfirmation ? 'text' : 'password' }}" class="form-control form-floating input-password" id="confirmarpassword" placeholder="Confirma tu contraseña" />
                 <span class="input-group-text">
                     <i class="bi" [ngClass]="{'bi-eye': !showPasswordConfirmation, 'bi-eye-slash': showPasswordConfirmation}" id="toggle-password" style="cursor: pointer" (click)="togglePasswordConfirmationVisibility()"></i>
                 </span>
