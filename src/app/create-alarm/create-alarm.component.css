@@ -39,8 +39,8 @@ form{
 
 .margin-inline {
   display: inline;
-  margin-left: 40px;
-  WIDTH: 85%;
+  margin-left: 0;
+  WIDTH: 100%;
 
 
 }
