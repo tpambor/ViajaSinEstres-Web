@@ -44,10 +44,5 @@ Este proyecto es una aplicación web desarrollada con Angular y Bootstrap para l
     ```
 4. Abre tu navegador y navega a `http://localhost:4200/` para ver la aplicación en funcionamiento.
 
-## Contribución
 
-¡Las contribuciones son bienvenidas! Si tienes sugerencias, mejoras o correcciones, no dudes en abrir un issue o enviar un pull request.
 
-## Licencia
-
-Este proyecto está bajo la Licencia [MIT](https://opensource.org/licenses/MIT).
