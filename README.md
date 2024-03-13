@@ -1,27 +1,53 @@
-# ViajaSinEstres
+# Aplicación ViajaSinEstres
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+Este proyecto es una aplicación web desarrollada con Angular y Bootstrap para la gestión de alarmas. Permite a los usuarios realizar diversas acciones como registrar, crear, editar, iniciar sesión, listar y eliminar alarmas.
 
-## Development server
+## Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Viviana
 
-## Code scaffolding
+#### Registro
+- Permite a los usuarios crear una cuenta en la aplicación proporcionando la información requerida.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Crear Alarma
+- Permite a los usuarios crear nuevas alarmas con información como nombre, origen, destino, preferencias, etc.
 
-## Build
+#### Editar Alarma
+- Permite a los usuarios modificar los detalles de una alarma existente, como  nombre, origen, destino, preferencias, etc.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Tim
 
-## Running unit tests
+#### Iniciar Sesión
+- Permite a los usuarios autenticarse en la aplicación para acceder a las funcionalidades protegidas.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Listado de Alarmas
+- Muestra un listado de todas las alarmas creadas por el usuario con la capacidad de ver detalles y realizar acciones como editar o eliminar.
 
-## Running end-to-end tests
+#### Eliminar Alarma
+- Permite a los usuarios eliminar una alarma existente de su lista de alarmas.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Tecnologías Utilizadas
 
-## Further help
+- Angular: Framework de desarrollo de aplicaciones web.
+- Bootstrap: Framework de diseño front-end para la creación de interfaces web responsivas y atractivas.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Instalación
+
+1. Clona este repositorio en tu máquina local.
+2. Instala las dependencias utilizando el siguiente comando:
+    ```
+    npm install
+    ```
+3. Inicia la aplicación con el siguiente comando:
+    ```
+    ng serve
+    ```
+4. Abre tu navegador y navega a `http://localhost:4200/` para ver la aplicación en funcionamiento.
+
+## Contribución
+
+¡Las contribuciones son bienvenidas! Si tienes sugerencias, mejoras o correcciones, no dudes en abrir un issue o enviar un pull request.
+
+## Licencia
+
+Este proyecto está bajo la Licencia [MIT](https://opensource.org/licenses/MIT).
