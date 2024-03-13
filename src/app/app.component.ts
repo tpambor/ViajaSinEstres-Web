@@ -22,6 +22,6 @@ export class AppComponent {
   title = 'ViajaSinEstres';
 
   hasNavbar() {
-    return (this.router.url !== '/') && (this.router.url !== '/register');
+    return (this.router.url !== '/') && (this.router.url !== '/register') && (this.router.url !== '/recover');
   }
 }

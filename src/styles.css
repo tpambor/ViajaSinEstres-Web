@@ -60,10 +60,6 @@
     --bs-table-border-color: #dee2e6;
 }
 
-.modal {
-    --bs-modal-bg: #fff;
-}
-
 .btn {
     --bs-btn-border-color: #36633F;
     --bs-btn-hover-border-color: #345d3a;
