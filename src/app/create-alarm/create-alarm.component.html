@@ -10,11 +10,12 @@
       <form id="form-create">
         <div class="mb-3">
           <label for="email" class="form-label">Nombre</label>
-          <input type="nombre" class="form-control margin-inline" id="nombre" placeholder="Ingresa su  nombre" />
+          <input type="nombre" class="form-control margin-inline" id="nombre" placeholder="Ingresa el nombre de la alarma" />
       </div>
       <div class="mb-3">
-        <label for="password" class="form-label"><strong>Ruta</strong> </label>
+
       </div>
+        <label for="password" class="form-label"><strong>Ruta</strong> </label>
           <div class="mb-3 selectList">
             <div class="mb-3 paddingright">
               <label for="salida" class="form-label">Salida</label>
@@ -42,7 +43,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="confirmarpassword" class="form-label">Tiempo de anticipaci[on</label>
+            <label for="confirmarpassword" class="form-label">Tiempo de anticipación</label>
             <div class="mb-3">
               <select class="select">
                 <option>5 minutos</option>
@@ -64,8 +65,10 @@
            </select>
         </div>
       </div>
-      <button type="submit" routerLink="/alarms" class="btn btn-cancel">Cancelar</button>
-      <button type="submit" (click)="createAlarm(); $event.preventDefault()" class="btn btn-primary">Crear</button>
+      <div class="alignCenter">
+        <button type="submit" routerLink="/alarms" class="btn btn-cancel">Cancelar</button>
+        <button type="submit" (click)="createAlarm(); $event.preventDefault()" class="btn btn-primary">Crear</button>
+      </div>
       </form>
   </div>
 </div>
