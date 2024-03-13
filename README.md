@@ -1,6 +1,8 @@
-# Aplicación ViajaSinEstres
+# Aplicación Web - ViajaSinEstres
 
 Este proyecto es una aplicación web desarrollada con Angular y Bootstrap para la gestión de alarmas. Permite a los usuarios realizar diversas acciones como registrar, crear, editar, iniciar sesión, listar y eliminar alarmas.
+
+**Versión en vivo desplegada en:** https://tpambor.github.io/ViajaSinEstres-Web/
 
 ## Funcionalidades
 
