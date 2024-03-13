@@ -170,7 +170,7 @@ export class AlarmListComponent {
   deleteAlarm() {
     this.toastService.showSuccessToast('Se ha eliminado la alarma ' + this.alarmToDelete.name)
 
-    ALARMS.splice(this.alarmToDelete.id, 1);
+    ALARMS.splice(ALARMS.findIndex((o) => o.id === this.alarmToDelete.id), 1);
 
     this.refreshData();
   }
